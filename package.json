@@ -8,6 +8,11 @@
     "test": "jest",
     "prepublish": "npm run build"
   },
+  "files": [
+    "package.json",
+    "lib",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/swdenglian/dva-rn.git"
