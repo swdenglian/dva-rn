@@ -13,5 +13,7 @@ standard-version -r $release --tag-prefix $prefix
 
 git push --follow-tags origin $master
 
+npm publish --registry https://registry.npmjs.org/
+
 echo "Git push origin $master"
 echo "Release finished."
