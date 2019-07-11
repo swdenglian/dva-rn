@@ -1,6 +1,6 @@
 {
   "name": "dva-rn",
-  "version": "0.1.2-0",
+  "version": "0.1.2",
   "description": "dva width rn",
   "main": "./lib/index.js",
   "scripts": {
