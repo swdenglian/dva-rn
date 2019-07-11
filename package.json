@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "prepublish": "npm run build"
+    "prepublish": "npm run test && npm run build"
   },
   "files": [
     "package.json",
