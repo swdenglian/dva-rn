@@ -1,10 +1,11 @@
 {
-  "name": "dva-rn",
+  "name": "@dva-rn/dva-rn",
   "version": "0.1.6",
   "description": "dva width rn",
   "main": "./lib/index.js",
   "scripts": {
     "build": "tsc",
+    "build:watch":"tsc -w",
     "test": "jest",
     "link": "npm run test && npm run build",
     "prepublish": "npm run link",
@@ -32,6 +33,9 @@
   },
   "homepage": "https://github.com/swdenglian/dva-rn#readme",
   "dependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.60.0",
+    "@types/react-redux": "^7.1.1",
     "dva-core": "^1.4.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4"
@@ -39,9 +43,6 @@
   "devDependencies": {
     "@types/jest": "^24.0.15",
     "@types/node": "^12.6.2",
-    "@types/react": "^16.8.23",
-    "@types/react-native": "^0.60.0",
-    "@types/react-redux": "^7.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^3.0.0",
     "jest": "^24.8.0",
