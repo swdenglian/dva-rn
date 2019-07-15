@@ -12,7 +12,8 @@
       "breaking": ":boom: Breaking Change",
       "refactor":":memo: code refactoring",
       "build":":building_construction: Building systems or package dependency updates"
-    }
+    },
+    "cacheDir": ".changelog"
   },
   "packages": [
     "packages/*"
