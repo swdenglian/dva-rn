@@ -35,9 +35,15 @@
 
 # node.js
 #
+node_modules/
+yarn.lock
+yarn-error.log
+package-lock.json
 /packages/**/node_modules/
 /packages/**/npm-debug.log
 /packages/**/yarn-error.log
+/packages/**/package-lock.json
+/packages/**/yarn.lock
 /packages/**/.pnp
 /packages/**/.pnp.js
 

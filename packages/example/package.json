@@ -14,10 +14,6 @@
     "@dva-rn/dva-rn": "^0.2.3",
     "@types/react-redux": "^7.1.1",
     "dva-rn": "^0.1.6",
-    "react": "16.8.3",
-    "react-dom": "^16.8.6",
-    "react-native": "0.59.9",
-    "react-native-web": "^0.11.5",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4"
   },
@@ -41,6 +37,12 @@
     "react-scripts": "3.0.1",
     "react-test-renderer": "16.8.3",
     "typescript": "^3.5.3"
+  },
+  "preeDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-native": "^0.60.0",
+    "react-native-web": "^0.11.5"
   },
   "jest": {
     "preset": "react-native"

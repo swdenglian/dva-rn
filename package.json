@@ -1,7 +1,16 @@
 {
   "name": "dva-rn",
   "private": true,
+  "scripts": {
+    "bootstrap": "yarn install && lerna bootstrap",
+    "changelog": "lerna-changelog"
+  },
   "devDependencies": {
-    "lerna": "^3.15.0"
+    "lerna": "^3.15.0",
+    "lerna-changelog": "^0.8.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-native": "^0.60.3",
+    "react-native-web": "^0.11.5"
   }
 }
