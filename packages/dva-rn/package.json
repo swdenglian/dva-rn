@@ -1,11 +1,11 @@
 {
   "name": "@dva-rn/dva-rn",
-  "version": "0.1.6",
+  "version": "0.1.0",
   "description": "dva width rn",
   "main": "./lib/index.js",
   "scripts": {
     "build": "tsc",
-    "build:watch":"tsc -w",
+    "build:watch": "tsc -w",
     "test": "jest",
     "link": "npm run test && npm run build",
     "prepublish": "npm run link",
