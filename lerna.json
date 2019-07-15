@@ -1,4 +1,7 @@
 {
+  "publishConfig":{
+    "access": "public"
+  },
   "packages": [
     "packages/*"
   ],
