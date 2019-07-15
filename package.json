@@ -1,63 +1,7 @@
 {
   "name": "dva-rn",
-  "version": "0.1.6",
-  "description": "dva width rn",
-  "main": "./lib/index.js",
-  "scripts": {
-    "build": "tsc",
-    "test": "jest",
-    "link": "npm run test && npm run build",
-    "prepublish": "npm run link",
-    "release": "sh ./scripts/release.sh"
-  },
-  "files": [
-    "package.json",
-    "lib",
-    "README.md"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/swdenglian/dva-rn.git"
-  },
-  "keywords": [
-    "dva",
-    "rn",
-    "react-native",
-    "react"
-  ],
-  "author": "D__",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/swdenglian/dva-rn/issues"
-  },
-  "homepage": "https://github.com/swdenglian/dva-rn#readme",
-  "dependencies": {
-    "dva-core": "^1.4.0",
-    "react-redux": "^7.1.0",
-    "redux": "^4.0.4"
-  },
+  "private": true,
   "devDependencies": {
-    "@types/jest": "^24.0.15",
-    "@types/node": "^12.6.2",
-    "@types/react": "^16.8.23",
-    "@types/react-native": "^0.60.0",
-    "@types/react-redux": "^7.1.1",
-    "cz-conventional-changelog": "^2.1.0",
-    "husky": "^3.0.0",
-    "jest": "^24.8.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-native": "^0.60.0",
-    "react-native-web": "^0.11.5",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.5.3"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {}
+    "lerna": "^3.15.0"
   }
 }

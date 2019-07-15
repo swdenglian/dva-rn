@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   Reducer,
@@ -6,11 +7,8 @@ import {
   Dispatch,
   MiddlewareAPI,
   StoreEnhancer,
-  bindActionCreators,
   Store
 } from "redux";
-import { Provider } from "react-redux";
-const { create } = require("dva-core");
 
 export interface onActionFunc {
   (api: MiddlewareAPI<any>): void;
@@ -107,39 +105,3 @@ export interface DvaInstance {
 
   getStore: () => Store;
 }
-
-export default function dva(opts?: DvaOption): DvaInstance {
-  const app = create(opts);
-  const oldAppStart = app.start;
-
-  app.start = (rootComponent: React.ComponentType) => {
-    if (!app._store) {
-      oldAppStart.call(app);
-    }
-
-    return function() {
-      return (
-        <Provider store={app._store}>
-          {React.createElement(rootComponent)}
-        </Provider>
-      );
-    };
-  };
-
-  app.getStore = (): Store => {
-    return app._store;
-  };
-
-  return app;
-}
-
-export { bindActionCreators };
-
-export {
-  connect,
-  connectAdvanced,
-  useSelector,
-  useDispatch,
-  useStore,
-  shallowEqual
-} from "react-redux";
