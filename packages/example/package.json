@@ -1,6 +1,6 @@
 {
   "name": "@dva-rn/example",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "start:rn": "node node_modules/react-native/local-cli/cli.js start",
@@ -11,7 +11,7 @@
     "eject:web": "react-scripts eject"
   },
   "dependencies": {
-    "@dva-rn/dva-rn": "^0.1.0",
+    "@dva-rn/dva-rn": "^0.1.1",
     "@types/react-redux": "^7.1.1",
     "dva-rn": "^0.1.6",
     "react": "16.8.3",
