@@ -3,13 +3,10 @@
     "access": "public"
   },
   "changelog": {
-    "repo": "@dva-rn/dva-rn",
     "labels": {
       "feat": ":rocket: New Feature",
-      "fix": ":bug: Bug Fix",
+      "bug": ":bug: Bug Fix",
       "doc": ":book: Documentation",
-      "internal": ":house: Internal",
-      "breaking": ":boom: Breaking Change",
       "refactor":":memo: code refactoring",
       "build":":building_construction: Building systems or package dependency updates"
     },

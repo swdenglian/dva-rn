@@ -50,4 +50,10 @@ const App = connect((state: AppStateType) => {
   return { count };
 })(AppContent);
 
-export default app.start(() => <App />);
+const StartedApp = app.start(() => <App />);
+
+export default class extends React.PureComponent {
+  render() {
+    return React.createElement(StartedApp);
+  }
+}

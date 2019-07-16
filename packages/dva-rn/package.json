@@ -34,7 +34,7 @@
   "homepage": "https://github.com/swdenglian/dva-rn#readme",
   "dependencies": {
     "@types/react": "^16.8.23",
-    "@types/react-native": "^0.60.0",
+    "@types/react-native": "^0.57.65",
     "@types/react-redux": "^7.1.1",
     "dva-core": "^1.4.0",
     "react-redux": "^7.1.0",
@@ -52,7 +52,7 @@
   "preeDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-native": "^0.60.0",
+    "react-native": "^0.59.10",
     "react-native-web": "^0.11.5"
   },
   "config": {
