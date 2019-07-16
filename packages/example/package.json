@@ -36,13 +36,13 @@
     "react-native-typescript-transformer": "^1.2.12",
     "react-scripts": "3.0.1",
     "react-test-renderer": "16.8.3",
-    "typescript": "^3.5.3"
-  },
-  "preeDependencies": {
-    "react": "^16.8.6",
+    "typescript": "^3.5.3",
     "react-dom": "^16.8.6",
     "react-native": "^0.60.0",
     "react-native-web": "^0.11.5"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
   },
   "jest": {
     "preset": "react-native"

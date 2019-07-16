@@ -1,5 +1,0 @@
-41 error Error: Command failed: git tag v0.1.2 -m v0.1.2
-41 error fatal: tag 'v0.1.2' already exists
-41 error
-41 error     at makeError (/usr/local/lib/node_modules/lerna/node_modules/execa/index.js:174:9)
-41 error     at /usr/local/lib/node_modules/lerna/node_modules/execa/index.js:278:16
