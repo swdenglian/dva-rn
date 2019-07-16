@@ -7,8 +7,8 @@
       "feat": ":rocket: New Feature",
       "bug": ":bug: Bug Fix",
       "doc": ":book: Documentation",
-      "refactor":":memo: code refactoring",
-      "build":":building_construction: Building systems or package dependency updates"
+      "refactor": ":memo: code refactoring",
+      "build": ":building_construction: Building systems or package dependency updates"
     },
     "cacheDir": ".changelog"
   },
@@ -16,5 +16,5 @@
     "packages/*"
   ],
   "npmClient": "yarn",
-  "version": "0.2.3"
+  "version": "0.2.4"
 }

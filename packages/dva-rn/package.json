@@ -1,6 +1,6 @@
 {
   "name": "@dva-rn/dva-rn",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "dva width rn",
   "main": "./lib",
   "scripts": {
