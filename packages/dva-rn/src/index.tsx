@@ -32,8 +32,11 @@ export interface Hooks {
 
 export type DvaOption = Hooks & {
   namespacePrefixWarning?: boolean;
-  initialState?: Object;
-  history?: Object;
+  initialState?: any;
+  history?: any;
+  setupApp?: any;
+  initialReducer?: any;
+  setupMiddlewares?: any;
 };
 
 export interface EffectsCommandMap {
@@ -108,8 +111,11 @@ export interface DvaInstance {
   getStore: () => Store;
 }
 
-export default function dva(opts?: DvaOption): DvaInstance {
-  const app = create(opts);
+export default function dva(
+  opts?: DvaOption,
+  createOpts: any = {}
+): DvaInstance {
+  const app = create(opts, createOpts);
   const oldAppStart = app.start;
 
   app.start = (rootComponent: React.ComponentType) => {
@@ -143,3 +149,4 @@ export {
   useStore,
   shallowEqual
 } from "react-redux";
+export * from "./router/index";
