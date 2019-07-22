@@ -18,13 +18,13 @@ export interface IRouterConfigs {
 
 export interface IDvaConfigs {
   routerConfigs: IRouterConfigs;
-  history?: History;
+  history?: any;
 }
 
 export type IDvaOption = IHooks & {
   namespacePrefixWarning?: boolean;
   initialState?: Object;
-  history?: History;
+  history?: any;
 };
 
 export interface IDvaInstance {

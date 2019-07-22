@@ -1,16 +1,5 @@
-import Dva, {
-  routerRedux,
-  createBrowserHistory,
-  createMemoryHistory,
-  createHashHistory
-} from "./dva";
+import Dva, { routerRedux, createBrowserHistory } from "./dva";
 
 export { IModel } from "./dva/dva-types";
-export {
-  Dva,
-  routerRedux,
-  createBrowserHistory,
-  createMemoryHistory,
-  createHashHistory
-};
+export { Dva, routerRedux, createBrowserHistory };
 export { connect } from "react-redux";

@@ -10,11 +10,14 @@ import {
 } from "@dva-rn/dva-rn";
 
 interface AppProps {
-  count?: number;
-  dispatch?: Dispatch<any>;
+  count: number;
 }
 
-class AppContent extends React.Component<AppProps> {
+interface IAppActions {
+  dispatch?: Dispatch;
+}
+
+class AppContent extends React.Component<AppProps & IAppActions> {
   render() {
     const { count, dispatch } = this.props;
     console.log(dva.getStore()!.getState());
@@ -36,12 +39,12 @@ class AppContent extends React.Component<AppProps> {
   }
 }
 
-// const App = AppContent;
-const App = connect((state: AppStateType, ownProps) => {
-  console.log(ownProps);
-  const { count } = state;
-  return { count };
-})(AppContent);
+const App = connect<AppProps>(
+  (state: AppStateType): AppProps => {
+    const { count } = state;
+    return { count: count ? count : 0 };
+  }
+)(AppContent);
 
 const B = class extends React.Component {
   render() {
@@ -52,7 +55,7 @@ const B = class extends React.Component {
 // app start------------------------------------------
 
 interface AppStateType {
-  count: number;
+  count?: number;
 }
 
 interface CountNameSpaceModel extends IModel {
@@ -83,11 +86,10 @@ const dva = new Dva({
 dva.model(countModel);
 
 const StartedApp = dva.start();
-
-setTimeout(() => console.log(dva.getStore()!.getState()), 3000);
+console.log(dva.getStore()!.getState());
 
 export default class extends React.PureComponent {
   render() {
-    return StartedApp ? React.createElement(StartedApp) : null;
+    return StartedApp ? <StartedApp /> : null;
   }
 }

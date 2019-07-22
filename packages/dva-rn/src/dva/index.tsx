@@ -1,26 +1,16 @@
 import React from "react";
 import { IDvaInstance, IDvaConfigs, IModel, IHooks } from "./dva-types";
-import {
-  createBrowserHistory,
-  createMemoryHistory,
-  createHashHistory
-} from "history";
-import * as routerRedux from "connected-react-router";
-import { connect } from "react-redux";
+import { connect, Provider } from "react-redux";
 
-import createWebRouter from "./create-router";
+import createRouter, {
+  routerRedux,
+  createBrowserHistory
+} from "./create-router";
 import { DvaPromise } from "./dva-promise";
-const { connectRouter, routerMiddleware } = routerRedux;
 
 const { create } = require("dva-core");
 
-export {
-  routerRedux,
-  createBrowserHistory,
-  createMemoryHistory,
-  createHashHistory,
-  connect
-};
+export { routerRedux, createBrowserHistory, connect };
 export default class Dva {
   RootComponent?: React.ComponentType<any>;
   dvaInstance?: IDvaInstance;
@@ -41,29 +31,21 @@ export default class Dva {
 
   start() {
     if (!this.dvaInstance) {
-      const history = this.configs!.history || createHashHistory();
-      const createOpts = {
-        initialReducer: {
-          router: connectRouter(history)
-        },
-        setupMiddlewares(middlewares: any) {
-          return [routerMiddleware(history), ...middlewares];
-        },
-        setupApp(dvaInstance: IDvaInstance) {
-          dvaInstance._history = patchHistory(history);
-        }
-      };
+      const { RouterComponent, history, createOpts } = createRouter(
+        this.configs
+      );
 
       this.dvaInstance = create({ history }, createOpts);
+
       if (!this.dvaInstance!._store) {
         this.dvaInstance!.start();
         this.doPromiseResolve(this.dvaInstance);
         if (this.dvaInstance && this.dvaInstance._store) {
           const { _store } = this.dvaInstance;
-          this.RootComponent = createWebRouter(
-            this.configs!.routerConfigs,
-            history,
-            _store
+          this.RootComponent = () => (
+            <Provider store={_store}>
+              <RouterComponent />
+            </Provider>
           );
         }
       }
@@ -87,13 +69,4 @@ export default class Dva {
   getStore() {
     return this.dvaInstance!._store;
   }
-}
-
-function patchHistory(history: any) {
-  const oldListen = history.listen;
-  history.listen = (callback: Function) => {
-    callback(history.location, history.action);
-    return oldListen.call(history, callback);
-  };
-  return history;
 }
