@@ -80,7 +80,15 @@ const dva = new Dva({
     path: "/",
     routes: [{ path: "/a/:id", component: App }, { path: "/b", component: B }]
   },
-  history: createBrowserHistory()
+  history: createBrowserHistory(),
+  otherProvider: v => {
+    return (
+      <View>
+        <Text>11111</Text>
+        {v}
+      </View>
+    );
+  }
 });
 
 dva.model(countModel);

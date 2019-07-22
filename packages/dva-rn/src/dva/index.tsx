@@ -1,5 +1,11 @@
 import React from "react";
-import { IDvaInstance, IDvaConfigs, IModel, IHooks } from "./dva-types";
+import {
+  IDvaInstance,
+  IDvaConfigs,
+  IModel,
+  IHooks,
+  IRouterConfigs
+} from "./dva-types";
 import { connect, Provider } from "react-redux";
 
 import createRouter, {
@@ -10,9 +16,9 @@ import { DvaPromise } from "./dva-promise";
 
 const { create } = require("dva-core");
 
-export { routerRedux, createBrowserHistory, connect };
+export { routerRedux, createBrowserHistory, connect, IRouterConfigs };
 export default class Dva {
-  RootComponent?: React.ComponentType<any>;
+  RootComponent: React.ComponentType<any> = () => null;
   dvaInstance?: IDvaInstance;
   configs: IDvaConfigs;
   // dva-core 未初始化的时候，存储用户操作
@@ -38,13 +44,18 @@ export default class Dva {
       this.dvaInstance = create({ history }, createOpts);
 
       if (!this.dvaInstance!._store) {
+        let otherProvider = this.configs.otherProvider;
         this.dvaInstance!.start();
         this.doPromiseResolve(this.dvaInstance);
         if (this.dvaInstance && this.dvaInstance._store) {
           const { _store } = this.dvaInstance;
           this.RootComponent = () => (
             <Provider store={_store}>
-              <RouterComponent />
+              {otherProvider ? (
+                otherProvider(<RouterComponent />)
+              ) : (
+                <RouterComponent />
+              )}
             </Provider>
           );
         }

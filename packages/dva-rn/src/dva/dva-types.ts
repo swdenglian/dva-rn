@@ -19,6 +19,7 @@ export interface IRouterConfigs {
 export interface IDvaConfigs {
   routerConfigs: IRouterConfigs;
   history?: any;
+  otherProvider?: (router: React.ReactElement) => React.ReactElement;
 }
 
 export type IDvaOption = IHooks & {
