@@ -1,39 +1,35 @@
-// import invariant from "invariant";
-import {
-  createBrowserHistory,
-  createMemoryHistory,
-  createHashHistory
-} from "history";
-import * as router from "react-router-dom";
-import * as routerRedux from "connected-react-router";
-import { DvaOption } from "../";
+import * as router from "./native";
+import React, { ReactElement } from "react";
+import createBrowserHistory from "./native/createHistory";
+import routerRedux from "./native/routerRedux";
+import Router, { IRouterProps } from "./native/Router";
+// import { DvaOption } from "../";
 
-const { connectRouter, routerMiddleware } = routerRedux;
+function patchHistory(history: any) {}
 
-function patchHistory(history: any) {
-  const oldListen = history.listen;
-  history.listen = (callback: any) => {
-    callback(history.location, history.action);
-    return oldListen.call(history, callback);
-  };
-  return history;
+export function getCreateOptions(opts: any = {}): any {
+  const { history, setupApp } = opts;
+
+  let r: any;
+  let routerRef: any = null;
+  if (history) {
+    console.log(history);
+    r = React.cloneElement(history, {
+      ref: (node: any) => {
+        routerRef = node;
+        const { ref } = history;
+        if (typeof ref === "function") {
+          ref(node);
+        }
+      }
+    });
+
+    setupApp!(r);
+  }
+
+  return {};
 }
 
-export function getCreateOptions(opts: DvaOption = {}): DvaOption {
-  const history = opts.history || createHashHistory();
-  return {
-    initialReducer: {
-      router: connectRouter(history)
-    },
-    setupMiddlewares(middlewares: any) {
-      return [routerMiddleware(history), ...middlewares];
-    },
-    setupApp(app: any) {
-      app._history = patchHistory(history);
-    }
-  };
-}
-
-export { createBrowserHistory, createMemoryHistory, createHashHistory };
+export { createBrowserHistory };
 export { router };
 export { routerRedux };

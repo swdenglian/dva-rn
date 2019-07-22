@@ -1,4 +1,3 @@
-// import invariant from "invariant";
 import {
   createBrowserHistory,
   createMemoryHistory,
@@ -6,7 +5,7 @@ import {
 } from "history";
 import * as router from "react-router-dom";
 import * as routerRedux from "connected-react-router";
-import { DvaOption } from "../";
+// import { DvaOption } from "../";
 
 const { connectRouter, routerMiddleware } = routerRedux;
 
@@ -19,8 +18,8 @@ function patchHistory(history: any) {
   return history;
 }
 
-export function getCreateOptions(opts: DvaOption = {}): DvaOption {
-  const history = opts.history || createBrowserHistory();
+export function getCreateOptions(opts: any = {}): any {
+  const history = opts.history || createHashHistory();
   return {
     initialReducer: {
       router: connectRouter(history)

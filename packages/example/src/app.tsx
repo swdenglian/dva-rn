@@ -1,41 +1,13 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
 import { Dispatch } from "redux";
-import dva, {
-  Model,
+import {
+  Dva,
+  IModel,
+  routerRedux,
   connect,
-  getCreateOptions,
-  router,
-  createBrowserHistory,
-  routerRedux
+  createBrowserHistory
 } from "@dva-rn/dva-rn";
-
-const { Router, Route } = router;
-
-interface AppStateType {
-  count: number;
-}
-
-interface CountNameSpaceModel extends Model {
-  state: number;
-  reducers: {
-    add(state: number): number;
-  };
-}
-
-const countModel: CountNameSpaceModel = {
-  namespace: "count",
-  state: 0,
-  reducers: {
-    add(state) {
-      return state + 1;
-    }
-  }
-};
-
-const history = createBrowserHistory();
-const app = dva({}, getCreateOptions({ history }));
-app.model(countModel);
 
 interface AppProps {
   count?: number;
@@ -45,7 +17,7 @@ interface AppProps {
 class AppContent extends React.Component<AppProps> {
   render() {
     const { count, dispatch } = this.props;
-    console.log(app.getStore().getState());
+    console.log(dva.getStore()!.getState());
     return (
       <View>
         <Text>{count}</Text>
@@ -64,6 +36,7 @@ class AppContent extends React.Component<AppProps> {
   }
 }
 
+// const App = AppContent;
 const App = connect((state: AppStateType, ownProps) => {
   console.log(ownProps);
   const { count } = state;
@@ -72,24 +45,49 @@ const App = connect((state: AppStateType, ownProps) => {
 
 const B = class extends React.Component {
   render() {
-    console.log(app.getStore().getState());
-    return "1";
+    return <Text>111</Text>;
   }
 };
 
-const StartedApp = app.start(() => {
-  return (
-    <Router history={history}>
-      <Route path="/">
-        <Route path="/b" exact component={B} />
-        <Route path="/a/:id" component={App} />
-      </Route>
-    </Router>
-  );
+// app start------------------------------------------
+
+interface AppStateType {
+  count: number;
+}
+
+interface CountNameSpaceModel extends IModel {
+  state: number;
+  reducers: {
+    add(state: number): number;
+  };
+}
+
+const countModel: CountNameSpaceModel = {
+  namespace: "count",
+  state: 0,
+  reducers: {
+    add(state) {
+      return state + 1;
+    }
+  }
+};
+
+const dva = new Dva({
+  routerConfigs: {
+    path: "/",
+    routes: [{ path: "/a/:id", component: App }, { path: "/b", component: B }]
+  },
+  history: createBrowserHistory()
 });
+
+dva.model(countModel);
+
+const StartedApp = dva.start();
+
+setTimeout(() => console.log(dva.getStore()!.getState()), 3000);
 
 export default class extends React.PureComponent {
   render() {
-    return React.createElement(StartedApp);
+    return StartedApp ? React.createElement(StartedApp) : null;
   }
 }
