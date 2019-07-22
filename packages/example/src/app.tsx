@@ -81,7 +81,7 @@ const dva = new Dva({
     routes: [{ path: "/a/:id", component: App }, { path: "/b", component: B }]
   },
   history: createBrowserHistory(),
-  otherProvider: v => {
+  otherWrapper: v => {
     return (
       <View>
         <Text>11111</Text>

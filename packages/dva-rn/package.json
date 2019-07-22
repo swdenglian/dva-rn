@@ -6,9 +6,9 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
-    "test": "jest",
-    "link": "npm run test && npm run build",
-    "release": "sh ./scripts/release.sh"
+    "link": " npm run build",
+    "release": "sh ./scripts/release.sh",
+    "prepublish": "rm -rf ./lib && npm run build"
   },
   "files": [
     "package.json",

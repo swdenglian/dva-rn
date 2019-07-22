@@ -44,15 +44,15 @@ export default class Dva {
       this.dvaInstance = create({ history }, createOpts);
 
       if (!this.dvaInstance!._store) {
-        let otherProvider = this.configs.otherProvider;
+        let otherWrapper = this.configs.otherWrapper;
         this.dvaInstance!.start();
         this.doPromiseResolve(this.dvaInstance);
         if (this.dvaInstance && this.dvaInstance._store) {
           const { _store } = this.dvaInstance;
           this.RootComponent = () => (
             <Provider store={_store}>
-              {otherProvider ? (
-                otherProvider(<RouterComponent />)
+              {otherWrapper ? (
+                otherWrapper(<RouterComponent />)
               ) : (
                 <RouterComponent />
               )}
