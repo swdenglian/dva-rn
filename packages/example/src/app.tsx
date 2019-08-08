@@ -46,7 +46,7 @@ const App = connect<AppProps>(
   }
 )(AppContent);
 
-const B = class extends React.Component {
+const B = class extends React.Component<{ a: string }> {
   render() {
     return <Text>111</Text>;
   }
@@ -81,7 +81,7 @@ const dva = new Dva({
     routes: [{ path: "/a/:id", component: App }, { path: "/b", component: B }]
   },
   history: createBrowserHistory(),
-  otherWrapper: v => {
+  otherWrapper: (v: any) => {
     return (
       <View>
         <Text>11111</Text>

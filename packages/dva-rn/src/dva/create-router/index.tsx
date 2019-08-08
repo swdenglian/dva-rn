@@ -44,7 +44,7 @@ export function getCreateOptions(navigationContainer: NavigationContainer) {
   return { history: {} as History, createOpts };
 }
 
-export { routerRedux, createBrowserHistory };
+export { routerRedux, createBrowserHistory, createHashHistory };
 
 function createNavigator(routerConfigs: IRouterConfigs) {
   const { routes = [] } = routerConfigs;
@@ -64,5 +64,9 @@ const mapStateToProps = (state: any) => ({
 });
 
 const createBrowserHistory = () => {
+  return {} as History;
+};
+
+const createHashHistory = () => {
   return {} as History;
 };

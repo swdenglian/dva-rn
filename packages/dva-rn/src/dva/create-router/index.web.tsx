@@ -2,7 +2,7 @@ console.log("dva-web");
 import React from "react";
 import { IRouterConfigs, IDvaConfigs, IDvaInstance } from "../dva-types";
 import { Router, Route, RouteProps } from "react-router";
-import { createBrowserHistory } from "history";
+import { createBrowserHistory, createHashHistory } from "history";
 
 import * as routerRedux from "connected-react-router";
 const { connectRouter, routerMiddleware } = routerRedux;
@@ -62,4 +62,4 @@ function patchHistory(history: any) {
   return history;
 }
 
-export { routerRedux, createBrowserHistory };
+export { routerRedux, createBrowserHistory, createHashHistory };

@@ -10,13 +10,20 @@ import { connect, Provider } from "react-redux";
 
 import createRouter, {
   routerRedux,
-  createBrowserHistory
+  createBrowserHistory,
+  createHashHistory
 } from "./create-router";
 import { DvaPromise } from "./dva-promise";
 
 const { create } = require("dva-core");
 
-export { routerRedux, createBrowserHistory, connect, IRouterConfigs };
+export {
+  routerRedux,
+  createBrowserHistory,
+  createHashHistory,
+  connect,
+  IRouterConfigs
+};
 export default class Dva {
   RootComponent: React.ComponentType<any> = () => null;
   dvaInstance?: IDvaInstance;

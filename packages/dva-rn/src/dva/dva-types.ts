@@ -12,7 +12,7 @@ import {
 
 export interface IRouterConfigs {
   path: string;
-  component?: ComponentType;
+  component?: ComponentType<any>;
   routes?: IRouterConfigs[];
 }
 
