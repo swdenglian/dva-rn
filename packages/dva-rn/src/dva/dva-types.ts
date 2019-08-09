@@ -1,3 +1,9 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-07-22 09:38:50
+ * @LastEditTime: 2019-08-09 10:07:54
+ */
 import { ComponentType } from "react";
 import { History } from "history";
 import {
@@ -12,6 +18,7 @@ import {
 
 export interface IRouterConfigs {
   path: string;
+  defaultRouter?: string;
   component?: ComponentType<any>;
   routes?: IRouterConfigs[];
 }

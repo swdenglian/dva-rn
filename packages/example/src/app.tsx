@@ -23,6 +23,7 @@ class AppContent extends React.Component<AppProps & IAppActions> {
     console.log(dva.getStore()!.getState());
     return (
       <View>
+        <Text>A</Text>
         <Text>{count}</Text>
         <Button
           title="add"
@@ -46,11 +47,17 @@ const App = connect<AppProps>(
   }
 )(AppContent);
 
-const B = class extends React.Component<{ a: string }> {
+class B extends React.Component<{ a: string }> {
   render() {
-    return <Text>111</Text>;
+    return <Text>B</Text>;
   }
-};
+}
+
+class C extends React.Component<{ a: string }> {
+  render() {
+    return <Text>C</Text>;
+  }
+}
 
 // app start------------------------------------------
 
@@ -78,17 +85,22 @@ const countModel: CountNameSpaceModel = {
 const dva = new Dva({
   routerConfigs: {
     path: "/",
-    routes: [{ path: "/a/:id", component: App }, { path: "/b", component: B }]
+    defaultRouter: "/b",
+    routes: [
+      { path: "/a/:id", component: App },
+      { path: "/b", component: B },
+      { path: "/c", component: C }
+    ]
   },
-  history: createBrowserHistory(),
-  otherWrapper: (v: any) => {
-    return (
-      <View>
-        <Text>11111</Text>
-        {v}
-      </View>
-    );
-  }
+  history: createBrowserHistory()
+  // otherWrapper: (v: any) => {
+  //   return (
+  //     <View>
+  //       <Text>11111</Text>
+  //       {v}
+  //     </View>
+  //   );
+  // }
 });
 
 dva.model(countModel);

@@ -1,7 +1,7 @@
 console.log("dva-web");
 import React from "react";
 import { IRouterConfigs, IDvaConfigs, IDvaInstance } from "../dva-types";
-import { Router, Route, RouteProps } from "react-router";
+import { Router, Route, RouteProps, Redirect, Switch } from "react-router";
 import { createBrowserHistory, createHashHistory } from "history";
 
 import * as routerRedux from "connected-react-router";
@@ -15,8 +15,8 @@ export default function createRouter(configs: IDvaConfigs) {
   return { RouterComponent, history, createOpts };
 }
 
-function getRoute(routerConfigs: IRouterConfigs) {
-  const { path = "", component, routes = [] } = routerConfigs;
+function getRoute(routerConfigs: IRouterConfigs, index: number = 0) {
+  const { path = "", component, routes = [], defaultRouter } = routerConfigs;
   const routeProps: RouteProps = {
     path
   };
@@ -25,11 +25,24 @@ function getRoute(routerConfigs: IRouterConfigs) {
   if (component) routeProps.component = component;
   if (routes.length) {
     routes.forEach(route => {
-      children.push(getRoute(route));
+      children.push(getRoute(route, index + 1));
     });
   }
 
-  return (
+  if (defaultRouter) {
+    children.push(
+      <Redirect
+        key={`defaultRouter-${index}`}
+        exact
+        from={routerConfigs.path}
+        to={defaultRouter}
+      />
+    );
+  }
+
+  return index === 0 && routes.length > 0 ? (
+    <Switch>{children}</Switch>
+  ) : (
     <Route key={routerConfigs.path} {...routeProps}>
       {children}
     </Route>

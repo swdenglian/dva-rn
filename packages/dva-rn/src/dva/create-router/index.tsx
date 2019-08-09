@@ -14,7 +14,6 @@ import routerRedux from "./native-route-redux";
 
 import { IRouterConfigs, IDvaConfigs } from "../dva-types";
 import { connect } from "react-redux";
-import { View } from "react-native";
 
 export default function createRouter(configs: IDvaConfigs) {
   const AppNavigator = createNavigator(configs.routerConfigs);
@@ -47,7 +46,7 @@ export function getCreateOptions(navigationContainer: NavigationContainer) {
 export { routerRedux, createBrowserHistory, createHashHistory };
 
 function createNavigator(routerConfigs: IRouterConfigs) {
-  const { routes = [] } = routerConfigs;
+  const { routes = [], defaultRouter } = routerConfigs;
   const navigationRouteConfigMap: NavigationRouteConfigMap = {};
   for (let i = 0; i < routes.length; i += 1) {
     const route = routes[i];
@@ -56,7 +55,14 @@ function createNavigator(routerConfigs: IRouterConfigs) {
     };
   }
 
-  return createStackNavigator(navigationRouteConfigMap);
+  return createStackNavigator(
+    navigationRouteConfigMap,
+    defaultRouter
+      ? {
+          initialRouteName: defaultRouter
+        }
+      : {}
+  );
 }
 
 const mapStateToProps = (state: any) => ({
