@@ -1,6 +1,6 @@
 {
   "name": "@dva-rn/dva-rn",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "dva width rn",
   "main": "./lib",
   "scripts": {
@@ -71,5 +71,5 @@
   "husky": {
     "hooks": {}
   },
-  "gitHead": "c0c94f2925a41b8b419b6dd0917f533b65003a5c"
+  "gitHead": "6bc46e687aa6101a815dc1d321e137bb50389354"
 }
