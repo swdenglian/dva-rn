@@ -20,10 +20,10 @@
     "url": "git+https://github.com/swdenglian/dva-rn.git"
   },
   "keywords": [
-    "react",
     "dva",
     "dva-rn",
     "rn",
+    "react",
     "react-native",
     "react-native-web"
   ],
@@ -47,6 +47,7 @@
     "react-navigation": "^3.11.1",
     "react-navigation-redux-helpers": "^3.0.2",
     "react-redux": "^7.1.0",
+    "react-router-cache-route": "^1.5.0",
     "react-router-dom": "^4.4.0-beta.8",
     "redux": "^4.0.4"
   },

@@ -6,6 +6,7 @@ import { createBrowserHistory, createHashHistory } from "history";
 
 import * as routerRedux from "connected-react-router";
 const { connectRouter, routerMiddleware } = routerRedux;
+const { CacheSwitch, default: CacheRoute } = require('react-router-cache-route');
 
 export default function createRouter(configs: IDvaConfigs) {
   const children = getRoute(configs.routerConfigs);
@@ -40,12 +41,14 @@ function getRoute(routerConfigs: IRouterConfigs, index: number = 0) {
     );
   }
 
+  const RouteComponent = routerConfigs.catch ? CacheRoute : Route;
+
   return index === 0 && routes.length > 0 ? (
-    <Switch>{children}</Switch>
+    <CacheSwitch>{children}</CacheSwitch>
   ) : (
-    <Route key={routerConfigs.path} {...routeProps}>
+    <RouteComponent {...routerConfigs.catch?routerConfigs.catch:{}} key={routerConfigs.path} {...routeProps}>
       {children}
-    </Route>
+    </RouteComponent>
   );
 }
 

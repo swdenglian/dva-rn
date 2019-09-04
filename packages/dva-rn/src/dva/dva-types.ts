@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-07-22 09:38:50
- * @LastEditTime: 2019-08-09 10:07:54
+ * @LastEditTime: 2019-09-04 15:42:38
  */
 import { ComponentType } from "react";
 import { History } from "history";
@@ -21,6 +21,9 @@ export interface IRouterConfigs {
   defaultRouter?: string;
   component?: ComponentType<any>;
   routes?: IRouterConfigs[];
+  catch?:{
+    when:"forward" | "back" | "always"
+  };
 }
 
 export interface IDvaConfigs {
